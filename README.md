@@ -2,6 +2,28 @@
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.48-blue.svg)](https://doi.org/10.25663/bl.app.48)
 
 # app-dt6tonifti
+
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+**Converts a dtiInit dt6.mat tensor fit into NIfTI maps of FA, MD, AD, RD and the Westin shape indices (cl, cp, cs) with vistasoft.**
+
+Loads dti/dt6.mat from a dtiInit output, recomputes the eigen-decomposition and writes FA, MD, AD, RD, cl, cp and cs as NIfTI images in the tensor datatype. Use it when a dtiInit output must be used by Apps that take a tensor datatype. Format conversion utility; no model is refitted from the DWI.
+
+Run it on brainlife.io: [https://doi.org/10.25663/bl.app.48](https://doi.org/10.25663/bl.app.48)
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `0` | `neuro/dtiinit` | yes | dtiInit output directory containing dti/dt6.mat. |
+
+| Output | Datatype | Description |
+|---|---|---|
+| `0` | `neuro/tensor` | Tensor datatype with FA, MD, AD, RD, cl, cp and cs NIfTI maps. |
+| `1` | `raw` |  |
+
+Runtime: container `brainlife/mcr:neurodebian1604-r2017a`.
+
+<!-- brainlife-app:end -->
+
 This app will take a dt6 and create tensor (FA,MD,AD,RD) and Westin Shape Indices (cl, cp, cs) nifti images from a dt6.mat structure. First, a dt6.mat structure will be loaded and eigenvectors and eigenvalues will be extracted using Vistasoft's dtiEig function. The negative eigenvalues are then clipped to 0. Finally, tensors and Westin Shape indices nifti images are computed by using Vistasoft's dtiComputeFA and dtiComputeWestinShapes functions. This is all performed by running the main script.
 
 ### Authors
