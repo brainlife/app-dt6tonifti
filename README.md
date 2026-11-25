@@ -10,7 +10,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-lightgrey.svg" alt="MIT license"></a>
 </p>
 
-## 🧠 At a glance
+## At a glance
 
 <!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
 
@@ -20,18 +20,18 @@ Loads dti/dt6.mat from a dtiInit output, recomputes the eigen-decomposition and 
 
 | | |
 |---|---|
-| 📥 **Inputs** | `neuro/dtiinit` |
-| 📤 **Outputs** | `neuro/tensor` · `raw` |
-| 🐳 **Container** | `brainlife/mcr:neurodebian1604-r2017a` |
-| 🔗 **Run it** | [doi.org/10.25663/bl.app.48](https://doi.org/10.25663/bl.app.48) |
+| **Inputs** | `neuro/dtiinit` |
+| **Outputs** | `neuro/tensor` · `raw` |
+| **Container** | `brainlife/mcr:neurodebian1604-r2017a` |
+| **Run it** | [doi.org/10.25663/bl.app.48](https://doi.org/10.25663/bl.app.48) |
 
-#### 📥 Inputs
+#### Inputs
 
 | Input | Datatype | Required | Description |
 |---|---|---|---|
 | `0` | `neuro/dtiinit` | yes | dtiInit output directory containing dti/dt6.mat. |
 
-#### 📤 Outputs
+#### Outputs
 
 | Output | Datatype | Description |
 |---|---|---|
@@ -40,15 +40,15 @@ Loads dti/dt6.mat from a dtiInit output, recomputes the eigen-decomposition and 
 
 <!-- brainlife-app:end -->
 
-## 🚀 Running the App
+## Running the App
 
 The App runs from the [`1.0`](https://github.com/brainlife/app-dt6tonifti/tree/1.0) branch of this repository.
 
-### ☁️ On brainlife.io
+### On brainlife.io
 
 Open the App at [doi.org/10.25663/bl.app.48](https://doi.org/10.25663/bl.app.48), choose a `neuro/dtiinit` dataset from your project and press **Execute**. The App has no options. It loads `dti/dt6.mat`, recomputes the eigenvectors and eigenvalues with vistasoft's `dtiEig`, clips negative eigenvalues, and computes the tensor measures with `dtiComputeFA` and the Westin shape indices with `dtiComputeWestinShapes`. No model is refitted from the DWI. The maps are archived to your project as a `neuro/tensor` dataset, which can be used by Apps such as Tract Analysis Profiles.
 
-### 💻 Locally
+### Locally
 
 You need [Singularity/Apptainer](https://apptainer.org/). The App is a compiled MATLAB program (`compiled/main`, built from `main.m` with [vistasoft](https://github.com/vistalab/vistasoft) and [jsonlab](https://github.com/fangq/jsonlab)) and runs in the `brainlife/mcr:neurodebian1604-r2017a` container with the MATLAB Runtime R2017a.
 
@@ -67,7 +67,7 @@ You need [Singularity/Apptainer](https://apptainer.org/). The App is a compiled 
    ./main
    ```
 
-### 🧪 Sample data
+### Sample data
 
 Download a dtiInit sample from brainlife.io with the [brainlife CLI](https://github.com/brainlife/cli):
 
@@ -78,18 +78,18 @@ mkdir input
 bl dataset download 5a0dcb1216e499548135dd27 && mv 5a0dcb1216e499548135dd27 input/dtiinit
 ```
 
-## 📦 Outputs
+## Outputs
 
 The App writes seven NIfTI images in the working directory, on the grid of the dtiInit tensors:
 
 - `fa.nii.gz`, `md.nii.gz`, `ad.nii.gz`, `rd.nii.gz`: fractional anisotropy and mean, axial and radial diffusivity;
 - `cl.nii.gz`, `cp.nii.gz`, `cs.nii.gz`: Westin linear, planar and spherical shape indices.
 
-## 🩺 Troubleshooting
+## Troubleshooting
 
 - **`output missing`**: `fa.nii.gz` was not written. Check that the input directory contains `dti/dt6.mat`.
 
-## 📚 Citing
+## Citing
 
 > [!TIP]
 > If you use this App in your work, please cite the App, the software it builds on and brainlife.io (below). GitHub's **Cite this repository** button gives the App citation in APA and BibTeX.
@@ -98,13 +98,13 @@ The App writes seven NIfTI images in the working directory, on the grid of the d
 - Hayashi S, Caron BA, Heinsfeld AS, et al. brainlife.io: a decentralized and open-source cloud platform to support neuroscience research. *Nature Methods* 21:809–813 (2024). [doi:10.1038/s41592-024-02237-2](https://doi.org/10.1038/s41592-024-02237-2)
 - Avesani P, McPherson B, Hayashi S, et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. *Scientific Data* 6:69 (2019). [doi:10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
 
-## 👥 Authors
+## Authors
 
 - Brad Caron
 
 **Contributors:** Soichi Hayashi, Franco Pestilli (project director)
 
-## 💰 Funding
+## Funding
 
 [![Wellcome-226486/Z/22/Z](https://img.shields.io/badge/Wellcome-226486%2FZ%2F22%2FZ-purple.svg)](https://wellcome.org/)
 [![NIH-NINDS-U24NS140384](https://img.shields.io/badge/NIH_NINDS-U24NS140384-green.svg)](https://reporter.nih.gov/project-details/11261037)
@@ -123,6 +123,6 @@ The App writes seven NIfTI images in the working directory, on the grid of the d
 
 <sub>brainlife.io is publicly funded, and acknowledging that support helps keep it running. This App was developed with support from Wellcome, the U.S. National Institutes of Health (including the BRAIN Initiative BRAIN CONNECTS program: The Axonal Projectome EXchange, U24NS140384, and the Center for Mesoscale Connectomics, UM1NS132207) and the U.S. National Science Foundation.</sub>
 
-## ⚖️ License
+## License
 
 [MIT](LICENSE).
